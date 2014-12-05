@@ -1,0 +1,27 @@
+<?php 
+
+
+class CustomerLogin extends ObjectModel
+{
+/*
+  public static $definition = array(
+                              'table' => );
+
+
+  protected $webserviceParameters = array(
+		'objectsNodeName' => 'customer_login',
+		'fields' => array(
+			'cookie_gen' => array('xlink_resource'=> 'zones'),
+			'email' => array('xlink_resource'=> 'currencies'),
+		),
+	);*/
+
+
+
+  public static $definition = array();
+  protected $webserviceParameters = array();
+
+  
+
+
+}
