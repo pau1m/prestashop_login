@@ -26,9 +26,9 @@
 
 class CookieCoreHack extends CookieCore
 {
-
+//@todo place value in a config file or better still - find a better way to do it
 	protected function getDomain($shared_urls = null)
 	{
-    return '.llrsso.dev';
+         return '.llrsso.dev';
 	}
 }
