@@ -24,13 +24,48 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-class Cookie extends CookieCore
+class Customer extends CustomerCore 
 {
 
-	protected function getDomain($shared_urls = null)
+	/**
+	 * Logout
+	 *
+	 * @since 1.5.0
+	 */
+	public function logout()
 	{
-
-    //needs to pull or derive this value from config
-    return '.llrsso.dev';
+		if (isset(Context::getContext()->cookie))
+			Context::getContext()->cookie->logout();
+		$this->logged = 0;
+		Tools::redirect('http://llrsso.dev/user/logout');
 	}
+
+	/**
+	 * Soft logout, delete everything links to the customer
+	 * but leave there affiliate's informations
+	 *
+	 * @since 1.5.0
+	 */
+	public function mylogout()
+	{
+		if (isset(Context::getContext()->cookie))
+			Context::getContext()->cookie->mylogout();
+		$this->logged = 0;
+		Tools::redirect('http://llrsso.dev/user/logout');
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

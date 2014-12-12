@@ -1,6 +1,15 @@
 <?php 
 
 
+		
+		// if (!Tools::getIsset('step') && $this->context->customer->isLogged() && !$this->ajax)
+		// 	Tools::redirect('index.php?controller='.(($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'my-account'));
+
+		// if (Tools::getValue('create_account'))
+		// 	$this->create_account = true;
+
+
+
 class WebserviceSpecificManagementCustomerLogin implements WebserviceSpecificManagementInterface
 {
 
@@ -19,7 +28,6 @@ class WebserviceSpecificManagementCustomerLogin implements WebserviceSpecificMan
 	// ),
 	);
 
-	
   public function setObjectOutput(WebserviceOutputBuilderCore $obj) {
 		$this->objOutput = $obj;
 		return $this;

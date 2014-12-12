@@ -1,5 +1,7 @@
 <?php
 
+//@todo rename and refactor (we don't need the custom rest stuff any more)
+
 if (!defined('_PS_VERSION_')){
   exit;
 }
