@@ -29,8 +29,12 @@ class Cookie extends CookieCore
 
 	protected function getDomain($shared_urls = null)
 	{
+    $cookie_domain = Configuration::get('CUSTOMERLOGIN_DRUPALDOMAIN');
 
-    //needs to pull or derive this value from config
-    return '.llrsso.dev';
+    if (!empty($cookie_domain)){
+        return $cookie_domain;
+    } else {
+      displayError('Cookie domain not set in configuration');
+    }
 	}
 }
