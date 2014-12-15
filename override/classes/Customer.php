@@ -37,7 +37,7 @@ class Customer extends CustomerCore
 		if (isset(Context::getContext()->cookie))
 			Context::getContext()->cookie->logout();
 		$this->logged = 0;
-		Tools::redirect('http://llrsso.dev/user/logout');
+		Tools::redirect(Configuration::get('CUSTOMERLOGIN_DRUPALURL') . 'user/logout');
 	}
 
 	/**
@@ -51,7 +51,7 @@ class Customer extends CustomerCore
 		if (isset(Context::getContext()->cookie))
 			Context::getContext()->cookie->mylogout();
 		$this->logged = 0;
-		Tools::redirect('http://llrsso.dev/user/logout');
+		Tools::redirect(Configuration::get('CUSTOMERLOGIN_DRUPALURL') . 'user/logout');
 	}
 
 
