@@ -23,7 +23,7 @@ class CustomerLogin extends Module
     parent::__construct();
  
     $this->displayName = $this->l('Customer Login');
-    $this->description = $this->l('Authenticate a customer via webservice');
+    $this->description = $this->l('A clumsy SSO solution');
  
     $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
  
@@ -62,7 +62,7 @@ class CustomerLogin extends Module
                   'type' => 'text',
                   'label' => $this->l('Cookie Domain'), 
                   'name' => 'customerlogin_drupaldomain',
-                  'description' => $this->l('Beware of the dragons'),
+                  'desc' => $this->l('This should be the TLD with a dot at the start eg .example.com'),
                   'size' => 20,
                   'required' => true
               ),
@@ -70,7 +70,7 @@ class CustomerLogin extends Module
                   'type' => 'text',
                   'label' => $this->l('Drupal URL'), 
                   'name' => 'customerlogin_drupalurl',
-                  'description' => $this->l('Include the http:// and a trailing slash'),
+                  'desc' => $this->l('URL of accompanying Drupal install. Include the http:// and a trailing slash to give the form http://example.com/'),
                   'size' => 20,
                   'required' => true
               ),
