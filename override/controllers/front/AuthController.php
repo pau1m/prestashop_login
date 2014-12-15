@@ -62,6 +62,17 @@ class AuthController extends AuthControllerCore
 
     //same to with logout -> need to pass the user to /user/logout then redirect back to whence they came from the sh
     if (!$this->context->customer->isLogged()) {
+
+        $drupal_domain = Configuration::get('CUSTOMERLOGIN_DRUPALURL');
+        //@todo add validation
+        if (!empty($drupal_domain)){
+          Tools::redirect($drupal_domain . 'user?destination=presta-redirect/my-account');
+        } else {
+          displayError('Cookie domain not set in configuration');
+    }
+
+
+
       Tools::redirect('http://llrsso.dev/user?destination=presta-redirect/my-account');
     }
 
