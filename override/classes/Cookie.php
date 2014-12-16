@@ -34,7 +34,39 @@ class Cookie extends CookieCore
     if (!empty($cookie_domain)){
         return $cookie_domain;
     } else {
-      displayError('Cookie domain not set in configuration');
+
+    Tools::displayError('Cookie retrieve cookie domain, is it set in module config?');
+
+    $r = '!(?:(\w+)://)?(?:(\w+)\:(\w+)@)?([^/:]+)?(?:\:(\d*))?([^#?]+)?(?:\?([^#]+))?(?:#(.+$))?!i';
+
+    if (!preg_match ($r, Tools::getHttpHost(false, false), $out) || !isset($out[4]))
+     return false;
+
+    if (preg_match('/^(((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]{1}[0-9]|[1-9]).)'.
+     '{1}((25[0-5]|2[0-4][0-9]|[1]{1}[0-9]{2}|[1-9]{1}[0-9]|[0-9]).)'.
+     '{2}((25[0-5]|2[0-4][0-9]|[1]{1}[0-9]{2}|[1-9]{1}[0-9]|[0-9]){1}))$/', $out[4]))
+     return false;
+    if (!strstr(Tools::getHttpHost(false, false), '.'))
+     return false;
+
+    $domain = false;
+    if ($shared_urls !== null)
+    {
+     foreach ($shared_urls as $shared_url)
+     {
+       if ($shared_url != $out[4])
+         continue;
+       if (preg_match('/^(?:.*\.)?([^.]*(?:.{2,4})?\..{2,3})$/Ui', $shared_url, $res))
+       {
+         $domain = '.'.$res[1];
+         break;
+       }
+     }
+    }
+    if (!$domain)
+     $domain = $out[4];
+     return  $domain;
+     
     }
 	}
 }
